@@ -2,7 +2,9 @@ package automation.training.cleancode;
 
 import automation.training.cleancode.models.*;
 import automation.training.cleancode.planes.*;
+
 import java.util.*;
+
 
 public class Airport {
     private final List<? extends Plane> planes;
