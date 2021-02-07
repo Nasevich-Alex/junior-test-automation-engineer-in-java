@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class MilitaryPlane extends Plane{
 
-    private final MilitaryType type;
+    private MilitaryType type;
 
     public MilitaryPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, MilitaryType type) {
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
@@ -19,18 +19,18 @@ public class MilitaryPlane extends Plane{
 
     @Override
     public String toString() {
-        return super.toString().replace("}",
-                ", type=" + type +
-                        '}');
+        return "MilitaryPlane{" +
+                "type=" + getType() +
+                '}';
     }
 
     @Override
-    public boolean equals(Object objectPlane) {
-        if (this == objectPlane) return true;
-        if (!(objectPlane instanceof MilitaryPlane)) return false;
-        if (!super.equals(objectPlane)) return false;
-        MilitaryPlane that = (MilitaryPlane) objectPlane;
-        return type == that.type;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MilitaryPlane)) return false;
+        if (!super.equals(o)) return false;
+        MilitaryPlane militaryPlane = (MilitaryPlane) o;
+        return type == militaryPlane.type;
     }
 
     @Override
