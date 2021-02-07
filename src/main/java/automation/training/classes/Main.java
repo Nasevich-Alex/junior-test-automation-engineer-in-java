@@ -3,16 +3,16 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Car car1 = new Car(1, BrandOfCars.BMW, "X6", 2010, "Red", 25000, 4579);
-        Car car2 = new Car(2, BrandOfCars.RENAULT, "Megane", 1999, "Blue", 5000, 8647);
-        Car car3 = new Car(3, BrandOfCars.FORD, "F350", 2005, "Black", 14000, 5267);
+        Car car1 = new Car(BrandOfCars.BMW, "X6", 2010, 25000, 4579, "Red", 1);
+        Car car2 = new Car(BrandOfCars.RENAULT, "Megane", 1999, 5000, 8647, "Blue", 1);
+        Car car3 = new Car(BrandOfCars.FORD, "F350", 2005, 14000, 5267, "Black", 3);
         Car car4 = new Car(BrandOfCars.TOYOTA, "Prius", 2018, 19000);
-        Car car5 = new Car(5, BrandOfCars.BMW, "E39", 1995, "White", 7000, 6972);
+        Car car5 = new Car(BrandOfCars.BMW, "E39", 1995, 7000, 6972, "White",5);
         Car car6 = new Car(BrandOfCars.VOLVO, "XC90", 2001, 12000);
-        Car car7 = new Car(7, BrandOfCars.RENAULT, "Clio", 2006, "Black", 4500, 9634);
-        Car car8 = new Car(8, BrandOfCars.MERCEDES, "Sprinter", 1998, "Red", 10000, 4125);
+        Car car7 = new Car(BrandOfCars.RENAULT, "Clio", 2006, 4500, 9634, "Black", 7);
+        Car car8 = new Car(BrandOfCars.MERCEDES, "Sprinter", 1998, 10000, 4125, "Red", 8);
         Car car9 = new Car(BrandOfCars.CITROEN, "Xantia", 2007, 7500);
-        Car car10 = new Car(10, BrandOfCars.KIA, "Rio", 2019, "Orange", 11000, 1298);
+        Car car10 = new Car(BrandOfCars.KIA, "Rio", 2019, 11000, 1298, "Orange", 10);
 
         ArrayList<Car> cars = new ArrayList<>();
         cars.add(car1);

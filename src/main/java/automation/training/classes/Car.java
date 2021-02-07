@@ -1,13 +1,13 @@
 package automation.training.classes;
 
 public class Car {
-    int id;
+    private int id;
     BrandOfCars brand;
-    String model;
-    int yearOfIssue;
-    String colour;
-    int price;
-    int regNumber;
+    private String model;
+    private int yearOfIssue;
+    private String colour;
+    private int price;
+    private int regNumber;
 
     public Car(BrandOfCars brand, String model, int yearOfIssue, int price) {
         this.brand = brand;
@@ -16,14 +16,11 @@ public class Car {
         this.price = price;
     }
 
-    public Car(int id, BrandOfCars brand, String model, int yearOfIssue, String colour, int price, int regNumber) {
-        this.id = id;
-        this.brand = brand;
-        this.model = model;
-        this.yearOfIssue = yearOfIssue;
-        this.colour = colour;
-        this.price = price;
+    public Car(BrandOfCars brand, String model, int yearOfIssue, int price, int regNumber, String colour, int id) {
+        this(brand, model, yearOfIssue, price);
         this.regNumber = regNumber;
+        this.colour = colour;
+        this.id = id;
     }
 
 
