@@ -2,12 +2,7 @@ package automation.training.cleancode;
 
 import automation.training.cleancode.models.*;
 import automation.training.cleancode.planes.*;
-
 import java.util.*;
-
-// version: 1.1
-// made by Vitali Shulha
-// 4-Jan-2019
 
 public class Airport {
     private final List<? extends Plane> planes;
@@ -86,7 +81,7 @@ public class Airport {
     }
 
     public Airport sortByMaxLoadCapacity() {
-        planes.sort(Comparator.comparingInt(Plane::getMinLoadCapacity));
+        planes.sort(Comparator.comparingInt(Plane::getMaxLoadCapacity));
         return this;
     }
 

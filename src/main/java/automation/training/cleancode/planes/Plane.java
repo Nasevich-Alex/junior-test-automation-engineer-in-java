@@ -3,7 +3,7 @@ package automation.training.cleancode.planes;
 import java.util.Objects;
 
 abstract public class Plane {
-    String model;
+    private String model;
     private final int maxSpeed;
     private final int maxFlightDistance;
     private final int maxLoadCapacity;
@@ -15,6 +15,14 @@ abstract public class Plane {
         this.maxLoadCapacity = maxLoadCapacity;
     }
 
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public int getMaxSpeed() {
         return maxSpeed;
     }
@@ -23,9 +31,7 @@ abstract public class Plane {
         return maxFlightDistance;
     }
 
-    public int getMinLoadCapacity() {
-        return this.maxLoadCapacity;
-    }
+    public int getMaxLoadCapacity() { return maxLoadCapacity;}
 
     @Override
     public String toString() {
