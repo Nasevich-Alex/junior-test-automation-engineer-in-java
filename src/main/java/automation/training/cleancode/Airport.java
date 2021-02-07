@@ -10,7 +10,7 @@ public class Airport {
         this.planes = planes;
     }
 
-    public List<PassengerPlane> getPassengerPlane() {
+    public List<PassengerPlane> getPassengerPlanes() {
         List<PassengerPlane> passengerPlanes = new ArrayList<>();
         for (Plane plane : planes) {
             if (plane instanceof PassengerPlane) {
@@ -31,8 +31,8 @@ public class Airport {
     }
 
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
-        PassengerPlane planeWithMaxCapacity = getPassengerPlane().get(0);
-        for (PassengerPlane passengerPlane : getPassengerPlane()) {
+        PassengerPlane planeWithMaxCapacity = getPassengerPlanes().get(0);
+        for (PassengerPlane passengerPlane : getPassengerPlanes()) {
             if (passengerPlane.getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
                 planeWithMaxCapacity = passengerPlane;
             }

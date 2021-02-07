@@ -27,7 +27,7 @@ public class Runner {
     public static void main(String[] args) {
         Airport airport = new Airport(planes);
         Airport militaryAirport = new Airport(airport.getMilitaryPlanes());
-        Airport passengerAirport = new Airport(airport.getPassengerPlane());
+        Airport passengerAirport = new Airport(airport.getPassengerPlanes());
         System.out.println("Military airport sorted by max distance: " + militaryAirport.sortByMaxDistance());
         System.out.println("Passenger airport sorted by max speed: " + passengerAirport.sortByMaxSpeed());
         System.out.println("Plane with max passenger capacity: " + passengerAirport.getPassengerPlaneWithMaxPassengersCapacity());

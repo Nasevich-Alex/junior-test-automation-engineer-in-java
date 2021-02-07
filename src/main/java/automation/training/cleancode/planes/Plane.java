@@ -36,10 +36,10 @@ abstract public class Plane {
     @Override
     public String toString() {
         return "Plane{" +
-                "model='" + model + '\'' +
-                ", maxSpeed=" + maxSpeed +
-                ", maxFlightDistance=" + maxFlightDistance +
-                ", maxLoadCapacity=" + maxLoadCapacity +
+                "model='" + getModel() + '\'' +
+                ", maxSpeed=" + getMaxSpeed() +
+                ", maxFlightDistance=" + getMaxFlightDistance() +
+                ", maxLoadCapacity=" + getMaxLoadCapacity() +
                 '}';
     }
 
