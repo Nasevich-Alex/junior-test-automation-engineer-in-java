@@ -1,5 +1,6 @@
-package automation.training.cleancode;
+package automation.training;
 
+import automation.training.cleancode.Airport;
 import automation.training.cleancode.models.*;
 import automation.training.cleancode.planes.*;
 import org.junit.jupiter.api.Assertions;
