@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class ExperimentalPlane extends Plane{
 
-    private ExperimentalTypes experimentalType;
+    private final ExperimentalTypes experimentalType;
     private ClassificationLevel classificationLevel;
 
     public ExperimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, ExperimentalTypes type, ClassificationLevel classificationLevel) {
@@ -24,12 +24,9 @@ public class ExperimentalPlane extends Plane{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof ExperimentalPlane))
-            return false;
-        if (!super.equals(o))
-            return false;
+        if (this == o) return true;
+        if (!(o instanceof ExperimentalPlane)) return false;
+        if (!super.equals(o)) return false;
         ExperimentalPlane experimentalPlane = (ExperimentalPlane) o;
         return experimentalType == experimentalPlane.experimentalType;
     }
