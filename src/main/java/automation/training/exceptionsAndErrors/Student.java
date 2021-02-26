@@ -16,6 +16,11 @@ public class Student {
         this.subjectsWithMarks = new HashMap<>();
 
     }
+
+    public Map<Subjects, Integer> getSubjectsWithMarks() {
+        return subjectsWithMarks;
+    }
+
     public void addSubjectWithMark(Subjects subject, int mark) throws IllegalMarkException {
         if(mark > 10 || mark < 0) {
             throw new IllegalMarkException("Некорректная оценка (должна быть от 0 до 10)");
