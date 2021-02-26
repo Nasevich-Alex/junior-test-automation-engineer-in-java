@@ -1,19 +1,32 @@
 package automation.training.exceptionsAndErrors;
 
+import java.util.Objects;
+
 public class Subjects {
     private String nameOfSubject;
-    private int mark;
 
-    public Subjects(String nameOfSubject, int mark) {
+    public Subjects(String nameOfSubject) {
         this.nameOfSubject = nameOfSubject;
-        this.mark = mark;
     }
 
     public String getNameOfSubject() {
         return nameOfSubject;
     }
 
-    public int getMark() {
-        return mark;
+    public void setNameOfSubject(String nameOfSubject) {
+        this.nameOfSubject = nameOfSubject;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subjects subjects = (Subjects) o;
+        return Objects.equals(nameOfSubject, subjects.nameOfSubject);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameOfSubject);
     }
 }
