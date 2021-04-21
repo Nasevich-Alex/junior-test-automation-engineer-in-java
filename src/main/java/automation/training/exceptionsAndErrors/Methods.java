@@ -5,54 +5,35 @@ import automation.training.exceptionsAndErrors.exceptions.NoGroupsAtFacultyExcep
 import automation.training.exceptionsAndErrors.exceptions.NoStudentsInGroupException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Methods {
     public static double averageMarkOfAllSubjectsOfStudent(Student student) {
         double value = 0.0;
-        Set<Subjects> allSubjectsOfStudent = student.getSubjectsWithMarks().keySet();
-        for (Subjects currentSubject : allSubjectsOfStudent) {
-            value += student.getSubjectsWithMarks().get(currentSubject);
+        for(Map.Entry<Subjects, Integer> item : student.getSubjectsWithMarks().entrySet()) {
+            value += item.getValue();
         }
-        return value / allSubjectsOfStudent.size();
+        return value / student.getSubjectsWithMarks().size();
     }
 
-    public static double averageMarkOfSubjectOfGroupOfFaculty(Subjects subject, int group, Faculty faculty)
+    public static double averageMarkOfSubjectOfGroupOfFaculty(Faculty faculty, int groupId, Subjects subject)
             throws NoGroupsAtFacultyException, NoStudentsInGroupException {
-        double value = 0.0;
-        for(Group currentGroup : faculty.getGroups()) {
-            if(currentGroup.getGroupId() == group) {
-                List<Student> students = currentGroup.getListOfStudents();
-                for (Student currentStudent : students) {
-                    Set<Subjects> subjectsOfCurrentStudent = currentStudent.getSubjectsWithMarks().keySet();
-                    for (Subjects currentSubject : subjectsOfCurrentStudent) {
-                        if(currentSubject.equals(subject)) {
-                            value += currentStudent.getSubjectsWithMarks().get(currentSubject);
-                        }
-                    }
-                }
-                return value / students.size();
-            }
-        }
-        return 0;
+        return faculty
+                .getGroupOfFaculty(groupId)
+                .averageMarkAllStudentsInGroupForSubject(subject);
     }
-    public static double averageMarkOfSubjectInUniversity(Subjects subject, University university)
+    public static double averageMarkOfSubjectInUniversity(University university, Subjects subject)
             throws NoFacultiesException, NoGroupsAtFacultyException, NoStudentsInGroupException {
+
+
+
         double value = 0.0;
         for (Faculty currentFaculty : university.getFaculties()) {
             for (Group currentGroup : currentFaculty.getGroups()) {
-                List<Student> studentsOfCurrentGroup = currentGroup.getListOfStudents();
-                for (Student student : currentGroup.getListOfStudents()) {
-                    Set<Subjects> subjectsOfStudent = student.getSubjectsWithMarks().keySet();
-                        for (Subjects currentSubject : subjectsOfStudent) {
-                            if(currentSubject.equals(subject)) {
-                                value += student.getSubjectsWithMarks().get(subject);
-                            }
-                        }
-                }
-                return value / studentsOfCurrentGroup.size();
+               value += currentGroup.averageMarkAllStudentsInGroupForSubject(subject) / currentFaculty.getGroups().size();
             }
         }
-        return 0;
+        return value / university.getFaculties().size();
     }
 }

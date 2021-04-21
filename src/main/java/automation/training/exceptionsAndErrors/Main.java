@@ -1,12 +1,9 @@
 package automation.training.exceptionsAndErrors;
 
-import automation.training.exceptionsAndErrors.exceptions.IllegalMarkException;
-import automation.training.exceptionsAndErrors.exceptions.StudentHasNoSubjectsException;
-
-import java.sql.SQLOutput;
+import automation.training.exceptionsAndErrors.exceptions.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IllegalMarkException, StudentHasNoSubjectsException, NoStudentsInGroupException, NoGroupsAtFacultyException, NoFacultiesException {
         Subjects english = new Subjects("English");
         Subjects math = new Subjects("Math");
         Subjects economy = new Subjects("Economy");
@@ -23,9 +20,9 @@ public class Main {
         alex.addSubjectWithMark(math, 9);
         alex.addSubjectWithMark(economy, 7);
 
-        Student misha = new Student(english, 6);
-        misha.addSubjectWithMark(math, 8);
-        misha.addSubjectWithMark(economy, 4);
+        Student misha = new Student(english, 7);
+        misha.addSubjectWithMark(math, 10);
+        misha.addSubjectWithMark(economy, 8);
 
         Student sergey = new Student(english, 7);
         sergey.addSubjectWithMark(math, 6);
@@ -37,41 +34,41 @@ public class Main {
 
        // Student alisa = new Student(null, 15);
 
-        Group g1 = new Group(11);
-        g1.addStudent(petr);
-        g1.addStudent(ivan);
-        Group g2 = new Group(12);
-        g2.addStudent(alex);
-        g2.addStudent(misha);
-        Group b1 = new Group(21);
-        b1.addStudent(sergey);
-        b1.addStudent(pasha);
-        Group b2 = new Group(22);
+        Group geo2020 = new Group(11);
+        geo2020.addStudent(petr);
+        geo2020.addStudent(ivan);
+        Group geo2021 = new Group(12);
+        geo2021.addStudent(alex);
+        geo2021.addStudent(misha);
+        Group bio2020 = new Group(21);
+        bio2020.addStudent(sergey);
+        Group bio2021 = new Group(22);
+        bio2021.addStudent(pasha);
 
-        Faculty GEO = new Faculty();
-        GEO.addGroup(g1);
-        Faculty BIO = new Faculty();
-        BIO.addGroup(g2);
-        Faculty ATF = new Faculty();
-        ATF.addGroup(b1);
-        ATF.addGroup(b2);
-        Faculty MSF = new Faculty();
+        Faculty geo = new Faculty("geo");
+        geo.addGroup(geo2020);
+        Faculty bio = new Faculty("bio");
+        bio.addGroup(geo2021);
+        Faculty atf = new Faculty("atf");
+        atf.addGroup(bio2020);
+        atf.addGroup(bio2021);
+//        Faculty msf = new Faculty("msf");
 
 
-        University bsu = new University();
-        bsu.addFaculties(GEO);
-        bsu.addFaculties(BIO);
-        University bnty = new University();
-        bnty.addFaculties(ATF);
-        bnty.addFaculties(MSF);
+        University bsu = new University("BSU");
+        bsu.addFaculties(geo);
+        bsu.addFaculties(bio);
+        University bnty = new University("BNTY");
+        bnty.addFaculties(atf);
+//        bnty.addFaculties(msf);
 
-        System.out.println("Cредний балл по всем предметам студента  " + Methods.averageMarkOfAllSubjectsOfStudent(alex));
+        System.err.println("Average score in all subjects of the student  " + Methods.averageMarkOfAllSubjectsOfStudent(misha));
 
-        System.out.println("Cредний балл по конкретному предмету в конкретной группе и на конкретном факультете " +
-                Methods.averageMarkOfSubjectOfGroupOfFaculty(economy, 11, GEO));
+        System.err.println("Average score in a specific subject in a specific group and in a specific faculty " +
+                Methods.averageMarkOfSubjectOfGroupOfFaculty(atf, 21, economy));
 
-        System.out.println("Cредний балл по предмету для всего университета " +
-                Methods.averageMarkOfSubjectInUniversity(math, bsu));
+        System.err.println("Subject average for the entire university " +
+                Methods.averageMarkOfSubjectInUniversity(bnty, math));
 
 
     }

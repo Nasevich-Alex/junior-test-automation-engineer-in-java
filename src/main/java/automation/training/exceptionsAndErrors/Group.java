@@ -4,6 +4,8 @@ import automation.training.exceptionsAndErrors.exceptions.NoStudentsInGroupExcep
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Group {
     private int groupId;
@@ -24,9 +26,21 @@ public class Group {
 
     public List<Student> getListOfStudents() throws NoStudentsInGroupException {
         if(listOfStudents.isEmpty()) {
-            throw new NoStudentsInGroupException("В этой группе нет студентов");
+            throw new NoStudentsInGroupException("There are no students in this group");
         }
         return listOfStudents;
+    }
+
+    public double averageMarkAllStudentsInGroupForSubject(Subjects subject) throws NoStudentsInGroupException {
+        double value = 0.0;
+        for (Student currentStudent : getListOfStudents()) {
+            for(Map.Entry<Subjects, Integer> item : currentStudent.getSubjectsWithMarks().entrySet()) {
+                if(item.getKey().equals(subject)) {
+                    value += item.getValue();
+                }
+            }
+        }
+        return value / getListOfStudents().size();
     }
 
     public void addStudent(Student student) {
